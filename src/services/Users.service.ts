@@ -14,7 +14,7 @@ export default class UsersService {
         const user = await this.repository.findOneBy({ email });
     
         if (user && user.isActive) {
-          throw new AppError('This email is already being used', 400);
+          throw new Error('This email is already being used');
         } 
         const hashedKey = await hash(password, 10);
         const newUser = this.repository.create({ name, email, password: hashedKey, telefone });
@@ -34,7 +34,7 @@ export default class UsersService {
             isActive: true,
         });
         if (!specificUser) {
-            throw new AppError('User not found', 404);
+            throw new Error('User not found');
         }
 
         return specificUser;
@@ -43,7 +43,7 @@ export default class UsersService {
     static async update(id: string, { name, email, password, telefone }: IUserUpdateRequest): Promise<Users> {
         const user = await this.repository.findOneBy({ id, isActive: true });
         if (!user) {
-            throw new AppError('User not found', 404);
+            throw new Error('User not found');
         }
 
         await this.repository.update(id, {
@@ -59,7 +59,7 @@ export default class UsersService {
     static async delete(id: string) {
         const user = await this.repository.findOneBy({ id, isActive: true });
         if (!user) {
-            throw new AppError('User not found', 404);
+            throw new Error('User not found');
         }
 
         await this.repository.update(id, {
