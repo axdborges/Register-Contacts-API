@@ -16,10 +16,6 @@ class Contacts {
     email: string;
 
     @Column()
-    @Exclude()
-    password: string;
-
-    @Column()
     telefone: string;
 
     @CreateDateColumn()

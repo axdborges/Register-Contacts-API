@@ -21,6 +21,9 @@ class Users {
     @Column()
     telefone: string;
 
+    @Column()
+    isAdm: boolean;
+
     @Column({ default: true })
     @Exclude()
     readonly isActive: boolean;

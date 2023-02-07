@@ -19,6 +19,7 @@ export interface IUserRequestBody {
     email: string;
     password: string;
     telefone: string;
+    isAdm: boolean;
 }
 
 export interface IUserUpdateRequest {

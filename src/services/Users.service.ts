@@ -10,14 +10,14 @@ export default class UsersService {
 
     static repository = AppDataSource.getRepository(Users);
 
-    static async create({ name, email, password, telefone }: IUserRequestBody): Promise<Users> {
+    static async create({ name, email, password, telefone, isAdm }: IUserRequestBody): Promise<Users> {
         const user = await this.repository.findOneBy({ email });
     
         if (user && user.isActive) {
           throw new Error('This email is already being used');
         } 
         const hashedKey = await hash(password, 10);
-        const newUser = this.repository.create({ name, email, password: hashedKey, telefone });
+        const newUser = this.repository.create({ name, email, password: hashedKey, telefone, isAdm });
         const savedUser = await this.repository.save(newUser);
     
         return savedUser;
