@@ -6,19 +6,24 @@ import ContactsService from '../services/Contacts.service';
 
 export default class ContactsController {
     static async create(req: Request, res: Response) {
+      const { id } = req.token;
       const data: IContactRequestBody = req.body;
       try {
-        const newContact = await ContactsService.create(data);
+        const newContact = await ContactsService.create(id, data);
         return res.status(201).send(instanceToPlain(newContact));
       } catch (error) {
         if (error instanceof Error){
+          if (error.message == "User not found"){
+            return res.status(404).send(error.message)
+          }
           return res.status(400).send({ message: "Cannot create contact"})
         }
       }
     }
   
     static async read( req: Request, res: Response ) {
-      const contacts = await ContactsService.read();
+      const { id } = req.token;
+      const contacts = await ContactsService.read(id);
       return res.status(200).send(instanceToPlain(contacts));
     }
   

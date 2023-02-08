@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 
 export default class Ensuraces {
-    static async authentication(request: Request | any, response: Response, next: NextFunction) {
+    static async authentication(request: Request, response: Response, next: NextFunction) {
         let token = request.headers.authorization;
 
         if (!token) {
@@ -30,7 +30,7 @@ export default class Ensuraces {
         );
     }
 
-    static async onlyAdm(request: Request | any , _: Response, next: NextFunction) {
+    static async onlyAdm(request: Request, _: Response, next: NextFunction) {
         if (!request.token.isAdm) {
           throw new Error('User is not admin');
         }
@@ -38,7 +38,7 @@ export default class Ensuraces {
         return next();
     }
 
-    static partialPermissions(req: Request | any, _: Response, next: NextFunction) {
+    static partialPermissions(req: Request, _: Response, next: NextFunction) {
         const { id, isAdm } = req.token;
         const { id: userId } = req.params;
     

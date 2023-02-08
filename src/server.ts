@@ -6,7 +6,7 @@ import AppDataSource from './data-source';
     .then((_) => console.log('Database running'))
     .catch((err) => console.error('Database not running', err));
 
-  app.listen(process.env.PORT || 3000, () => {
+  app.listen(process.env.PORT || 3003, () => {
     console.log('Server running');
   });
 })();
