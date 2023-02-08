@@ -13,7 +13,7 @@ export default class UsersService {
     static async create({ name, email, password, telefone, isAdm }: IUserRequestBody): Promise<Users> {
         const user = await this.repository.findOneBy({ email });
     
-        if (user && user.isActive) {
+        if (user) {
           throw new Error('This email is already being used');
         } 
         const hashedKey = await hash(password, 10);

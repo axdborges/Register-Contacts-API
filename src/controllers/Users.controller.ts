@@ -12,14 +12,21 @@ export default class UsersController {
         return res.status(201).send(instanceToPlain(newUser));
       } catch (error) {
         if (error instanceof Error){
-            return res.status(401).send(error.message)
+            return res.status(400).send({message: error.message})
         }
       }
     }
   
     static async read( req: Request, res: Response ) {
-      const users = await UsersService.read();
-      return res.status(200).send(instanceToPlain(users));
+      
+      try {
+        const users = await UsersService.read();
+        return res.status(200).send(instanceToPlain(users));
+      } catch (error) {
+        if (error instanceof Error){
+          return res.status(401).send({message: error.message})
+        }
+      }
     }
   
     static async readById(req: Request, res: Response) {
@@ -29,7 +36,7 @@ export default class UsersController {
         return res.status(200).send(instanceToPlain(user));
       } catch (error) {
         if (error instanceof Error){
-            return res.status(404).send(error.message)
+            return res.status(404).send({message: error.message})
         }
       }
     }
@@ -41,7 +48,7 @@ export default class UsersController {
         return res.status(200).send(instanceToPlain(updatedUser));
       } catch (error) {
         if (error instanceof Error){
-            return res.status(404).send(error.message)
+            return res.status(404).send({message: error.message})
         }
       }
     }
@@ -53,7 +60,7 @@ export default class UsersController {
         return res.status(204).send();
       } catch (error) {
         if (error instanceof Error){
-            return res.status(404).send(error.message)
+            return res.status(404).send({message: error.message})
         }
       }
     }
