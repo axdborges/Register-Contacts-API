@@ -25,11 +25,6 @@ export default class ContactsService {
     }
 
     static async create(userId: string, { name, email, telefone }: IContactRequestBody): Promise<Contacts> {
-        // const user = await this.contactsRepository.findOneBy({ email, telefone });
-    
-        // if (user) {
-        //   throw new Error('This email is already being used');
-        // } 
         const user = await this.checkUserExists(userId);
         const newContact = this.contactsRepository.create({ name, email, telefone, user: user });
         const savedContact = await this.contactsRepository.save(newContact);

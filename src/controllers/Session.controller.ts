@@ -12,10 +12,10 @@ export default class SessionController {
         } catch (error) {
             if (error instanceof Error) {
                 if (error.message == "User not found"){
-                    return res.status(404).json(error.message)
+                    return res.status(404).json({ message: error.message})
                 }
                 if(error.message == "Email/password is wrong"){
-                    return res.status(401).json(error.message)
+                    return res.status(403).json({ message: error.message})
                 }
             }
         }

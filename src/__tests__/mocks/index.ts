@@ -23,3 +23,9 @@ export const mockedUserLogin = {
     email: "felipe@mail.com",
     password: "123"
 }
+
+export const mockedContact = {
+    name: "Marco aurélio",
+    email: "marcus@mail.com",
+    telefone: "324234234234"
+}
