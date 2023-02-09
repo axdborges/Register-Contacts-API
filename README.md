@@ -32,8 +32,8 @@ Por enquanto nesta aplicação Back end você pode:
 No terminal dentro do projeto clonado siga os seguintes passos: 
 
 <br>
-
-+ Configurar variáveis de ambiente:
+<ol>
+<li> Configurar variáveis de ambiente:
 
 No arquivo **.env.example** mude o nome do arquivo somente para **.env** e configure as seguintes variáveis de ambiente:
 
@@ -57,12 +57,31 @@ Na variável **DATABASE_URL** e nas demais mude os nomes em caixa alta para as i
 ## Observação: ##  
 A porta do servidor deve ser diferente do padrão 3000, pois nesta estará rodando a aplicação front end
 
-<br>
+</li>
 <br>
 
-+ Rodar projeto por containers Docker: 
+
+<li> Instale as dependências: 
+
+<br>  
+<br>
+  
+~~~javascript 
+
+yarn install
+
+~~~
+
+</li>
+<br>
+
+<li>
+  Rodar projeto por containers Docker: 
+  
+<br>
 
 Caso o Docker esteja configurado na sua máquina rode o seguinte comando: 
+  
 
 ~~~javascript
 
@@ -71,40 +90,61 @@ docker compose up
 ~~~
 
 <br>
-Caso o Docker não esteja configurado ou o container não rode perfeitamente, siga os seguintes passos:
+</li>
+  
+  <ol>
+    Caso o Docker não esteja configurado ou o container não rode perfeitamente, siga os seguintes passos:
+    
 <br>
 <br>
+    
+<li> Mude a variável de ambiente **DATABASE_URL** :
+  
+<br>
 
-+ Instale as dependências: 
+Dentro da variável DATABASE_URL mude a parte **@database** para **@localhost**
 
-~~~javascript 
+  
+~~~javascript
 
-yarn install
+DATABASE_URL=postgres://USUARIO_DO_POSTGRES:SENHA_DO_SEU_DATABASE@localhost:PORTA_POSTGRES/NOME_DO_DATABASE
 
 ~~~
 
-+ Rode as migrations: 
+</li>
+    
+    
+<li> Rode as migrations:
+
+<br>
+<br>
 
 ~~~javascript 
 
 yarn orm:run
 
 ~~~
+</li>
+    
+<li> Inicie o servidor: 
 
-+ Inicie o servidor: 
+<br>
+<br>
 
 ~~~javascript 
 
 yarn dev 
 
 ~~~
-
+</li>
+    
 <br>
 Se tudo estiver sido feito corretamente o servidor estará rodando. 
-
+</ol>
 <br>
 <br>
-
+</ol>
+  
 ## Rodar os testes: 
 
 Para rodar os testes utilize o seguinte comando: 
