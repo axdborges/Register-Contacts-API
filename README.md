@@ -54,6 +54,10 @@ Na variável **DATABASE_URL** e nas demais mude os nomes em caixa alta para as i
 <br>
 **Não** mude as variáveis em caixa baixa.
 
+## Observação: ##  
+A porta do servidor deve ser diferente do padrão 3000, pois nesta estará rodando a aplicação front end
+
+<br>
 <br>
 
 + Rodar projeto por containers Docker: 
