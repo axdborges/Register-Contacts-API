@@ -8,10 +8,23 @@ Este projeto tem como objetivo fazer um CRUD de contatos para cada usuário cada
 + Express.js
 + Typescript
 + PostgreSQL
++ TypeORM
 + bcryptjs
 + jsonwebtoken
 + Jest 
 + Docker
+
+## Funções da aplicação Back-end: 
+
+Por enquanto nesta aplicação Back end você pode: 
+
+<br>
+
++ Fazer um CRUD de usuário (com autenticação e autorização, soft delete e read by ID)
++ Fazer login com usuário
++ Fazer um CRUD de contatos com relacionamento N:1 com usuário logado
+
+<br>
 
 ## Passos para instalação: 
 
@@ -37,7 +50,7 @@ PORT=PORTA_SERVIDOR
 
 ~~~
 
-Na variável **DATABASE_URL** e nas demais mude os nomes em caixa alta para as informações que eles referenciam. 
+Na variável **DATABASE_URL** e nas demais mude os nomes em caixa alta para as informações que elas referenciam. 
 <br>
 **Não** mude as variáveis em caixa baixa.
 
@@ -102,8 +115,13 @@ yarn test
 ## Utilizar a aplicação Front end: 
 
 <br>
-Depois do servidor estar rodando, inicie o front end seguindo os passos deste repositório: 
+Depois que o servidor estiver rodando, inicie o front end seguindo os passos deste repositório: 
 https://github.com/axdborges/Register-contacts-webApp
+
+<br>
+
+
+
 
 
 
